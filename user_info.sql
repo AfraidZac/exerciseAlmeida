@@ -4,7 +4,7 @@ use user_info;
 
 CREATE TABLE login_info (
 id int primary key auto_increment unique not null,
-email varchar(255) unique not n,
+email varchar(255) unique not null,
 pass varchar(32)
 );
 
