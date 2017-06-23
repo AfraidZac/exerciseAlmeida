@@ -7,7 +7,15 @@ require_once(TEMPLATES_PATH . "/header.php");
  * Date: 22/06/2017
  * Time: 12:10
  */
-
+$servername = "localhost";
+$username = "root";
+$password = "1234";
+$dbname = "user_info";
+//Ligaçao com a Base de Dados
+$conn= new mysqli($servername,$username,$password,$dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 echo "
     <html>
     <head>
@@ -35,7 +43,7 @@ echo"
             <li>Phone <input type='number' name='phone' id='phone'/></li><br>
             <button type='submit' >Complete</button><br><br><br><br>
             <h5>* Required fields</h5>
-        </fieldset>
+        </fieldset> 
     </form>
     
     </body>

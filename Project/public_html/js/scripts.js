@@ -20,6 +20,10 @@ function requiredfields() {
 if (email=="" || emailcheck=="" || passcheck=="" || pass=="" || firstname == "" || lastname == ""){
 alert("fill in the required fields");
 return false;
+if (email == pass){
+    alert("Passoword cannot equal to the email");
+    return false;
+}
 }
 
 }
@@ -55,7 +59,7 @@ function passtest(){
     }else{
         show.innerHTML = '<tr><td bgcolor="green" width="'+strength+'"></td><td>Very Strong</td></tr>';
     }
-   
+
     return;
 
 }
