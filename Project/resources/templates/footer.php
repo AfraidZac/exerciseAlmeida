@@ -7,7 +7,7 @@
  */
 echo "
 <div id=\"footer\">
-    Made by: Almeida
+   <h5>CloudNode - By:Almeida</h5>
 </div>
 </body>
 </html>

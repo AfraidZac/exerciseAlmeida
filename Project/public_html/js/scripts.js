@@ -6,44 +6,56 @@ function requiredfields() {
     var passcheck= document.forms["form"]["passwordcheck"].value;
     var email= document.forms["form"]["email"].value;
     var emailcheck= document.forms["form"]["emailcheck"].value;
-    var name= document.forms["form"]["name"].value;
+    var firstname= document.forms["form"]["firstname"].value;
+    var lastname= document.forms["form"]["lastname"].value;
 
     if(email!=emailcheck){
         alert("Emails are not the same");
+        return false;
     }else if (pass!=passcheck){
         alert("Passwords are not the same");
+        return false;
     }
 
+if (email=="" || emailcheck=="" || passcheck=="" || pass=="" || firstname == "" || lastname == ""){
+alert("fill in the required fields");
+return false;
 }
+
+}
+
 function passtest(){
+
     var code = document.getElementById("password").value;
     var strength = 0;
     var show = document.getElementById("show");
     if((code.length >= 4) && (code.length <= 7)){
-        strength += 10;
+        strength += 15;
     }else if(code.length>7){
-        strength += 25;
+        strength += 30;
     }
     if(code.match(/[a-z]+/)){
-        strength += 10;
+        strength += 15;
     }
     if(code.match(/[A-Z]+/)){
         strength += 20;
     }
     if(code.match(/\d+/)){
-        strength += 20;
-    }
-    if(code.match(/\W+/)){
         strength += 25;
     }
-    if(strength < 30){
-        show.innerHTML = '<tr><td bgcolor="red" width="'+strength+'"></td><td>Muito Fraca </td></tr>';
-    }else if((strength >= 30) && (strength < 60)){
-        show.innerHTML = '<tr><td bgcolor="yellow" width="'+strength+'"></td><td>Fraca </td></tr>';
-    }else if((strength >= 60) && (strength < 85)){
-        show.innerHTML = '<tr><td bgcolor="blue" width="'+strength+'"></td><td>Decente </td></tr>';
-    }else{
-        show.innerHTML = '<tr><td bgcolor="green" width="'+strength+'"></td><td>Forte </td></tr>';
+    if(code.match(/\W+/)){
+        strength += 35;
     }
+    if(strength < 30){
+        show.innerHTML = '<tr><td bgcolor="red" width="'+strength+'"></td><td>Very weak</td></tr>';
+    }else if((strength >= 30) && (strength < 60)){
+        show.innerHTML = '<tr><td bgcolor="orange" width="'+strength+'"></td><td>Weak</td></tr>';
+    }else if((strength >= 60) && (strength < 85)){
+        show.innerHTML = '<tr><td bgcolor="blue" width="'+strength+'"></td><td>Strong</td></tr>';
+    }else{
+        show.innerHTML = '<tr><td bgcolor="green" width="'+strength+'"></td><td>Very Strong</td></tr>';
+    }
+   
     return;
+
 }

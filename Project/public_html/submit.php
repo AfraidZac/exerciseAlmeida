@@ -16,7 +16,7 @@
     $conn= new mysqli($servername,$username,$password,$dbname);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
-                                }
+    }
 
     $firstname =$_POST['firstname'];
         $lastname =$_POST['lastname'];
@@ -28,11 +28,6 @@
         $address =$_POST['address'];
         $phone = $_POST['phone'];
         $country = $_POST['country'];
-
-
-
-
-
 
     $login = "insert into login_info(email,pass) VALUES ('$email','$pass') ";
     $loginreturn = $conn->query($login);
@@ -57,12 +52,5 @@
         }else{
             echo"email is not unique";
         }
-
-
-
-
-
-
-
 
 ?>

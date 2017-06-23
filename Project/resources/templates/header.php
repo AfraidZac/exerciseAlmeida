@@ -12,20 +12,17 @@ echo "
  
 <html lang=\"en\">
 <head>
+    <script src = '/../../GitHub/exerciseAlmeida/Project/public_html/js/scripts.js' ></script>
     <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
-    <title>Simple Site</title>
+    <title>DatabaseRegister</title>
 </head>
  
 <body>
 <div id=\"header\">
-    <h1>Simple Site</h1>
+    <h1>Database register</h1>
     <ul class=\"nav global\">
-        <li><a href=\"form.php\">Register</a></li>
-        <li><a href=\"#\">Login</a></li>
-        <li><a href=\"#\">About</a></li>
     </ul>
  
 </div>
 ";
-
 ?>
