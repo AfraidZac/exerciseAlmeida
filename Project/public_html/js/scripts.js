@@ -8,6 +8,12 @@ function requiredfields() {
     var emailcheck= document.forms["form"]["emailcheck"].value;
     var name= document.forms["form"]["name"].value;
 
+    if(email!=emailcheck){
+        alert("Emails are not the same");
+    }else if (pass!=passcheck){
+        alert("Passwords are not the same");
+    }
+
 }
 function passtest(){
     var code = document.getElementById("password").value;

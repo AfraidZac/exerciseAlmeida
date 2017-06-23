@@ -16,7 +16,7 @@ echo "
         <script src = '/js/scripts.js/' ></script>
     </head>
     <body>
-    <form name='form' action='submit.php' method='post'>
+    <form name='form' action='submit.php' method='post' onsubmit='return requiredfields()' >
         <li>Email *<input type='text' name='email' id='email'placeholder='joe@example.com'/></li><br>
         <li>Email confirmation *<input type='text' name='emailcheck' id='emailcheck'/></li><br>
         <li>Password *<input type='password' name='password' id='passoword' onkeyup='return passtest()'/></li><br>
