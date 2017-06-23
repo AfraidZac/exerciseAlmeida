@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 22/06/2017.
  */
+
 function requiredfields() {
     var pass = document.forms["form"]["password"].value;
     var passcheck= document.forms["form"]["passwordcheck"].value;
@@ -17,17 +18,31 @@ function requiredfields() {
         return false;
     }
 
-if (email=="" || emailcheck=="" || passcheck=="" || pass=="" || firstname == "" || lastname == ""){
-alert("fill in the required fields");
-return false;
-if (email == pass){
-    alert("Passoword cannot equal to the email");
-    return false;
-}
-}
+    if (email=="" || emailcheck=="" || passcheck=="" || pass=="" || firstname == "" || lastname == ""){
+        alert("fill in the required fields");
+        return false;
+        if (email == pass){
+            alert("Passoword cannot equal to the email");
+            return false;
+        }
+    }
+
+    var portugal = document.forms["form"]["country"].value
+    var zip = document.forms["form"]["postal"].value
+    var zipcode = /^\d{4}-\d{3}?$/;
+    console.log(zip);
+    console.log(portugal);
+    if(portugal= "PT"){
+        if(zip.match(zipcode)){
+            return true;
+        } else {
+            alert("zip code not valid for portugal");
+            return false;
+        }
+    }
+
 
 }
-
 function passtest(){
 
     var code = document.getElementById("password").value;
@@ -63,3 +78,4 @@ function passtest(){
     return;
 
 }
+
