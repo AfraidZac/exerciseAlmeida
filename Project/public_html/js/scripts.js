@@ -27,7 +27,20 @@ function requiredfields() {
             return false;
         }
     }
+    var phone = document.forms["form"]["phone"];
+    var phonecode = /^(9[1236]\d{7}|2\d{8})$/;
+    if(phone.value>0){
 
+        if (phone.value.match(phonecode)) {
+            return true;
+        } else {
+            alert("The number is not portuguese the system will only take on portuguese numbers.");
+            return false;
+        }
+
+    }else{
+
+    }
 }
 function passtest(){
 
@@ -118,17 +131,3 @@ function countrycheck(){
          console.log("test");
     }
 
-    function phonecheck() {
-
-        var phone = document.forms["form"]["phone"];
-        var phonecode = /^(9[1236]\d{7}|2\d{8})$/;
-
-        if(phone.value.length == 9){
-            if (phone.value.match(phonecode)) {
-                return true;
-            } else {
-                alert("Insert a portuguese number");
-                return false;
-            }
-        }
-    }
