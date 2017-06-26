@@ -1,6 +1,4 @@
-
-
-    <?php
+<?php
     echo"<br><br><br>";
     include(realpath(dirname(__FILE__) . "/../resources/config.php"));
     require_once(TEMPLATES_PATH . "/header.php");
@@ -78,4 +76,4 @@
         }
     }
     echo"</fieldset>";
-    ?>
+?>

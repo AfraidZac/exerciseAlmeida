@@ -1,4 +1,4 @@
-    <?php
+<?php
     /**
      * Created by PhpStorm.
      * User: Administrator
@@ -12,4 +12,4 @@
     </body>
     </html>
     ";
-    ?>
+?>

@@ -1,6 +1,4 @@
-
-
-    <?php
+<?php
     /**
      * Created by PhpStorm.
      * User: Administrator
@@ -26,4 +24,4 @@
      
     </div>
     ";
-    ?>
+?>

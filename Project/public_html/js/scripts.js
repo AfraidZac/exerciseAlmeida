@@ -1,3 +1,4 @@
+
 /**
  * Created by Administrator on 22/06/2017.
  */
@@ -26,21 +27,6 @@ function requiredfields() {
             return false;
         }
     }
-
-    var portugal = document.forms["form"]["country"].value
-    var zip = document.forms["form"]["postal"].value
-    var zipcode = /^\d{4}-\d{3}?$/;
-    console.log(zip);
-    console.log(portugal);
-    if(portugal= "PT"){
-        if(zip.match(zipcode)){
-            return true;
-        } else {
-            alert("zip code not valid for portugal");
-            return false;
-        }
-    }
-
 
 }
 function passtest(){
@@ -79,3 +65,65 @@ function passtest(){
 
 }
 
+function zipcheck(){
+    var portugal = document.forms["form"]["country"].value;
+    var zip = document.forms["form"]["postal"].value;
+    var ziphiphen = document.forms["form"]["postal"];
+    var zipcode = /^\d{4}-\d{3}?$/;
+    var key = event.keyCode || event.charCode;
+    if(portugal == "PT"){
+
+        ziphiphen.maxLength=8;
+        ziplength= zip.length;
+        if(ziplength == 4){
+            if(key == 8 || key == 46){
+                return false;
+            }else {
+                ziphiphen.value = zip + String.fromCharCode(45);
+            }
+            }else if(ziplength >= 8){
+                if(zip.match(zipcode)){
+                    return true;
+                } else {
+                    while(!zip.match(zipcode)){
+                    zip= zip.substring(0,4)+"-"+zip.substring(5,8);
+                    ziphiphen.value = zip.substring(0,4)+"-"+zip.substring(5,8);
+                    alert("Zip code is not valid");
+                    return false;
+                }
+                }
+            }
+
+    }
+
+}
+
+function countrycheck(){
+
+    var country = document.forms["form"]["country"].value;
+    var hidepostal = document.forms["form"]["postal"];
+    var hidephone = document.forms["form"]["phone"];
+         if (country == "PT"){
+             hidepostal.setAttribute("type","");
+             hidephone.setAttribute("type","");
+
+         }else{
+             hidepostal.setAttribute("type","hidden");
+             hidephone.setAttribute("type","hidden");
+
+         }
+         console.log("test");
+    }
+
+    function phonecheck() {
+        var phone = document.forms["form"]["phone"];
+        var phonecode = /^(9[1236]\d{7}|2\d{8})$/;
+        if (phone.match(phonecode)){
+            alert("funciona");
+            return true;
+        }else{
+            alert("não funciona");
+            return false;
+        }
+
+    }
