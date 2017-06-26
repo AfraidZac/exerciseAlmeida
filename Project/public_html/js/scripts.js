@@ -34,6 +34,7 @@ function passtest(){
     var code = document.getElementById("password").value;
     var strength = 0;
     var show = document.getElementById("show");
+
     if((code.length >= 4) && (code.length <= 7)){
         strength += 15;
     }else if(code.length>7){
@@ -71,6 +72,7 @@ function zipcheck(){
     var ziphiphen = document.forms["form"]["postal"];
     var zipcode = /^\d{4}-\d{3}?$/;
     var key = event.keyCode || event.charCode;
+
     if(portugal == "PT"){
 
         ziphiphen.maxLength=8;
@@ -103,6 +105,7 @@ function countrycheck(){
     var country = document.forms["form"]["country"].value;
     var hidepostal = document.forms["form"]["postal"];
     var hidephone = document.forms["form"]["phone"];
+
          if (country == "PT"){
              hidepostal.setAttribute("type","");
              hidephone.setAttribute("type","");
@@ -116,14 +119,16 @@ function countrycheck(){
     }
 
     function phonecheck() {
+
         var phone = document.forms["form"]["phone"];
         var phonecode = /^(9[1236]\d{7}|2\d{8})$/;
-        if (phone.match(phonecode)){
-            alert("funciona");
-            return true;
-        }else{
-            alert("não funciona");
-            return false;
-        }
 
+        if(phone.value.length == 9){
+            if (phone.value.match(phonecode)) {
+                return true;
+            } else {
+                alert("Insert a portuguese number");
+                return false;
+            }
+        }
     }
