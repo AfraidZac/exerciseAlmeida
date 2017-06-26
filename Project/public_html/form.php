@@ -44,6 +44,7 @@
         include '/wamp64/www/GitHub/exerciseAlmeida/Project/resources/country.php';
         echo"
                     <li>TIN <input type='number' name='TIN' id='TIN'/></li><br>
+                    <li>Phone <input type='tel' maxlength='9' name='phone' id='phone' onkeyup='phonecheck()' /></li><br>
                     <button type='submit' name='isolated'>Complete</button><br><br><br><br>
                     <h5>* Required fields</h5>
                 </fieldset> 
