@@ -120,12 +120,23 @@ function countrycheck(){
     var hidephone = document.forms["form"]["phone"];
 
          if (country == "PT"){
-             hidepostal.setAttribute("type","");
-             hidephone.setAttribute("type","");
-
+             hidepostal.removeAttribute("disabled");
+             hidephone.removeAttribute("disabled");
+             hidepostal.removeAttribute("hidden");
+             hidephone.removeAttribute("hidden");
+             document.getElementById('labelphone').style.display = 'inline';
+             document.getElementById('labelpostal').style.display = 'inline';
+             document.getElementById('listphone').style.display = 'inline';
          }else{
-             hidepostal.setAttribute("type","hidden");
-             hidephone.setAttribute("type","hidden");
+             hidepostal.value = "";
+             hidephone.value ="";
+             hidepostal.setAttribute("disabled","");
+             hidephone.setAttribute("disabled","");
+             hidepostal.setAttribute("hidden","");
+             hidephone.setAttribute("hidden","");
+             document.getElementById('labelphone').style.display = 'none';
+             document.getElementById('labelpostal').style.display = 'none';
+             document.getElementById('listphone').style.display = 'none';
 
          }
          console.log("test");

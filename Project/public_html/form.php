@@ -38,17 +38,17 @@
                     <li>Password confirmation *<input type='password' name='passwordcheck' id='passwordcheck'/></li><br>
                     <li>Name *<input type='text' name='firstname' id='firstname' placeholder='First name'/><input type='text' name='lastname' id='lastname' placeholder='Last name'/></li><br>
                     <li>Address <input type='text' name='address' id='address'/></li><br>
-                    <li>Postal <input type='text' name='postal' id='postal' placeholder='xxxx-xxx'onkeyup=' return zipcheck()' pattern='\d{4}-\d{3}'/> <input type='text' name='locality' id='locality' placeholder='Mafra' /></li><br>
+                    <li><label for='postal' id='labelpostal'>Postal</label><input type='text' name='postal' id='postal' placeholder='xxxx-xxx'onkeyup=' return zipcheck()' pattern='\d{4}-\d{3}'/>  Locality<input type='text' name='locality' id='locality' placeholder='Mafra' /></li><br>
         "?>
 <?php
         include '/wamp64/www/GitHub/exerciseAlmeida/Project/resources/country.php';
         echo"
-                    <li>TIN <input type='text' pattern='^\d+$' maxlength='9' name='TIN' id='TIN' required title = 'Only intiger numbers'/></li><br>
-                    <li>Phone <input type='tel' maxlength='9' pattern='^\d+$' name='phone' id='phone' required title='Only portuguese numbers' /></li><br>
+                    <li>TIN <input type='text' pattern='^\d+$' maxlength='9' name='TIN' id='TIN' required title = 'Only integer numbers'/></li><br>
+                    <li id='listphone'><label for='phone' id='labelphone'>Phone</label> <input type='tel' maxlength='9' pattern='^\d+$' name='phone' id='phone' required title='Only portuguese numbers' /></li><br>
                     <button type='submit' name='isolated'>Complete</button><br><br><br><br>
                     <h5>* Required fields</h5>
                 </fieldset> 
-            </form>
+            </form> 
             
             </body>
         </html>
