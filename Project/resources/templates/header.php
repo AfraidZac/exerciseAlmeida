@@ -11,7 +11,7 @@
      
     <html lang=\"en\">
     <head>
-        <script src = '/../../GitHub/exerciseAlmeida/Project/public_html/js/scripts.js' ></script>
+        <script src = '/../../GitHub/exerciseAlmeida/Project/public_html/js/scripts.js' src ='' ></script>
         <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
         <title>DatabaseRegister</title>
     </head>

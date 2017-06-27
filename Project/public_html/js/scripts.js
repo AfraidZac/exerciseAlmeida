@@ -119,14 +119,20 @@ function countrycheck(){
     var hidepostal = document.forms["form"]["postal"];
     var hidephone = document.forms["form"]["phone"];
 
+
          if (country == "PT"){
              hidepostal.removeAttribute("disabled");
              hidephone.removeAttribute("disabled");
              hidepostal.removeAttribute("hidden");
              hidephone.removeAttribute("hidden");
+             document.getElementById('TIN').removeAttribute("disabled");
+             document.getElementById('TIN').removeAttribute("hidden");
              document.getElementById('labelphone').style.display = 'inline';
              document.getElementById('labelpostal').style.display = 'inline';
-             document.getElementById('listphone').style.display = 'inline';
+             document.getElementById('listphone').removeAttribute("style");
+             document.getElementById('TINlist').removeAttribute("style");
+             document.getElementById('TINlabel').removeAttribute("style");
+
          }else{
              hidepostal.value = "";
              hidephone.value ="";
@@ -137,8 +143,147 @@ function countrycheck(){
              document.getElementById('labelphone').style.display = 'none';
              document.getElementById('labelpostal').style.display = 'none';
              document.getElementById('listphone').style.display = 'none';
+             document.getElementById('TIN').setAttribute("disabled","");
+             document.getElementById('TIN').setAttribute("hidden","");
+             document.getElementById('TINlist').style.display = 'none';
+             document.getElementById('TINlabel').style.display = 'none';
+
 
          }
          console.log("test");
     }
+
+/*AJAX*/
+
+function validateemail() {
+
+    var request;
+
+    try {
+
+        request= new XMLHttpRequest();
+
+    }
+
+    catch (tryMicrosoft) {
+
+        try {
+
+            request= new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+        catch (otherMicrosoft)
+        {
+            try {
+                request= new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            catch (failed) {
+                request= null;
+            }
+        }
+    }
+
+    var url="../resources/gateway.php";
+    var emailaddress= document.getElementById("email").value;
+    var emailcheck= document.getElementById("emailcheck").value;
+    var vars= "email="+emailaddress;
+    request.open("POST", url, true);
+
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    request.onreadystatechange= function() {
+        if (request.readyState == 4 && request.status == 200) {
+            var return_data=  request.responseText;
+            document.getElementById("validate").innerHTML= return_data;
+        }
+    }
+
+    request.send(vars);
+}
+
+
+function validatetaxes() {
+
+
+
+
+    var request;
+
+    try {
+
+        request= new XMLHttpRequest();
+
+    }
+
+    catch (tryMicrosoft) {
+
+        try {
+
+            request= new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+        catch (otherMicrosoft)
+        {
+            try {
+                request= new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            catch (failed) {
+                request= null;
+            }
+        }
+    }
+
+
+
+    var url="../resources/taxes.php";
+    var TIN= document.getElementById("TIN").value;
+    var vars= "TIN="+TIN;
+
+
+
+
+    request.open("POST", url, true);
+
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    request.onreadystatechange= function() {
+        if (request.readyState == 4 && request.status == 200) {
+            var return_data=  request.responseText;
+            document.getElementById("valTIN").innerHTML= return_data;
+        }
+    }
+
+    request.send(vars);
+
+}
+
+function passwordequ() {
+
+    var passwordk= document.getElementById("password").value;
+    var passwordcheckk= document.getElementById("passwordcheck").value;
+    passlabel = document.getElementById("passwordcheckequ");
+
+    if (passwordk!=passwordcheckk){
+        passlabel.innerHTML = '<span style="color:darkred;">✗ Invalid password!</span>';
+    }else{
+        passlabel.innerHTML = '<span style="color:green;">✔ Valid password!</span>';
+    }
+
+}
+
+function emailequ() {
+
+    var emailk= document.getElementById("email").value;
+    var emailcheckk= document.getElementById("emailcheck").value;
+    emaillabel = document.getElementById("emailcheckequ");
+
+    if (emailk!=emailcheckk){
+        emaillabel.innerHTML = '<span style="color:darkred;">✗ Emails are not equal!</span>';
+    }else{
+        emaillabel.innerHTML = '<span style="color:green;">✔ Emails are equal!</span>';
+    }
+
+}
 
