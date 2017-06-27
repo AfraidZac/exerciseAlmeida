@@ -1,4 +1,4 @@
-<li>Country  <select name="country" onchange="return countrycheck()">
+<p>Country  <select class="btn btn-default dropdown-toggle" name="country" onchange="return countrycheck()">
 <option value="">Country...</option>
 <option value="AF">Afghanistan</option>
 <option value="AL">Albania</option>
@@ -247,4 +247,4 @@
 <option value="ZR">Zaire</option>
 <option value="ZM">Zambia</option>
 <option value="ZW">Zimbabwe</option>
-</select></li><br>
+</select></p><br>

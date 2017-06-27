@@ -47,7 +47,7 @@ function passtest(){
     var code = document.getElementById("password").value;
     var strength = 0;
     var show = document.getElementById("show");
-
+if(code != ""){
     if((code.length >= 4) && (code.length <= 7)){
         strength += 15;
     }else if(code.length>7){
@@ -66,17 +66,19 @@ function passtest(){
         strength += 35;
     }
     if(strength < 30){
-        show.innerHTML = '<tr><td bgcolor="red" width="'+strength+'"></td><td>Very weak</td></tr>';
+        show.innerHTML = '<span class="label label-danger">Very weak</span>';
     }else if((strength >= 30) && (strength < 60)){
-        show.innerHTML = '<tr><td bgcolor="orange" width="'+strength+'"></td><td>Weak</td></tr>';
+        show.innerHTML = '<span class="label label-warning">Weak</span>';
     }else if((strength >= 60) && (strength < 85)){
-        show.innerHTML = '<tr><td bgcolor="blue" width="'+strength+'"></td><td>Strong</td></tr>';
+        show.innerHTML = '<span class="label label-info">Strong</span>';
     }else{
-        show.innerHTML = '<tr><td bgcolor="green" width="'+strength+'"></td><td>Very Strong</td></tr>';
+        show.innerHTML = '<span class="label label-success">Very Strong</span>';
     }
 
     return;
-
+}else{
+    show.innerHTML = '<span class="label"></span>';
+}
 }
 
 function zipcheck(){

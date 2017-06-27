@@ -4,11 +4,16 @@
     require_once(TEMPLATES_PATH . "/header.php");
     ?>
         <div id="container">
-            <div id="content">
+            <div id="content" class="btn-group btn-group-justified">
                 <!-- content -->
 
-                <li><a href="?link=1" name="Register">Register</a></li>
-                <li><a href="?link=2" name="Index">Index</a></li>
+                <ul>
+                    <nav class="nav nav-pills">
+                        <li role="presentation"><a href="?link=1"  name="Register">Register</a></li>
+                        <li role="presentation"><a href="?link=2"  name="Index">Home</a></li>
+                    </nav>
+                </ul>
+
 <?php
 
                 $link = (isset($_GET['link']))? $_GET['link']: 'home';
@@ -32,3 +37,5 @@
     <?php
     require_once(TEMPLATES_PATH . "/footer.php");
 ?>
+
+

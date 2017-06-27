@@ -21,7 +21,7 @@
     $address =$_POST['address'];
     $phone = intval($_POST['phone']);
     $country = $_POST['country'];
-    echo"<fieldset><legend>feedback</legend>";
+    echo"<fieldset><legend>Feedback</legend> <ul class='nav-justified'>";
 
     if ($TIN>0){
         $checktin = "SELECT taxes_id FROM info WHERE taxes_id = '$TIN'";
@@ -67,5 +67,5 @@
     }
 
 
-    echo"</fieldset>";
+    echo"</fieldset></ul>";
 ?>
