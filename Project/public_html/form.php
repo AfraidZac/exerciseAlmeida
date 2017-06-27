@@ -48,7 +48,7 @@
                     <li id='TINlist'><label id='TINlabel'>TIN</label> <input type='text' pattern='^\d*$' minlength='9' maxlength='9' name='TIN' id='TIN' title = 'Only integer numbers' onsubmit='validatetaxes()'/></li>
                     <label id='valTIN'></label><br>
                     <li id='listphone'><label for='phone' id='labelphone'>Phone</label> <input type='tel' maxlength='9' pattern='^\d+$' name='phone' id='phone' title='Only portuguese numbers' /></li><br>
-                    <button type='submit' name='isolated'>Complete</button><br><br><br><br>
+                    <button type='submit' name='isolated' disabled hidden>Complete</button><br><br><br><br>
                     <h5>* Required fields</h5>
                 </fieldset> 
             </form> 

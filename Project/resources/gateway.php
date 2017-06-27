@@ -16,9 +16,10 @@ if(isset($_POST['email'])){
         $userid = $row[0];
 
         if($userid > 0) {
-            echo "Email allready in use";
+          echo "<span style=\"color:darkred;\">✗ Email is not valid!</span>";
         }else{
-            echo "Email is not in use";
+            echo "<span style=\"color:green;\">✔ Email is valid!</span>";
+
         }
     }
 

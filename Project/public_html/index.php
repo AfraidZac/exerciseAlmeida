@@ -19,7 +19,8 @@
                     include 'form.php';
                 }
                 if ($link == '2'){
-                    include 'index.php';
+                    include 'home.php';
+
                 }
 
                 ?>

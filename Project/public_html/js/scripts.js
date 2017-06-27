@@ -186,7 +186,6 @@ function validateemail() {
 
     var url="../resources/gateway.php";
     var emailaddress= document.getElementById("email").value;
-    var emailcheck= document.getElementById("emailcheck").value;
     var vars= "email="+emailaddress;
     request.open("POST", url, true);
 
@@ -267,8 +266,12 @@ function passwordequ() {
 
     if (passwordk!=passwordcheckk){
         passlabel.innerHTML = '<span style="color:darkred;">✗ Invalid password!</span>';
+        document.forms["form"]["isolated"].setAttribute("disabled","");
+        document.forms["form"]["isolated"].setAttribute("hidden","");
     }else{
         passlabel.innerHTML = '<span style="color:green;">✔ Valid password!</span>';
+        document.forms["form"]["isolated"].removeAttribute("disabled");
+        document.forms["form"]["isolated"].removeAttribute("hidden");
     }
 
 }
@@ -278,12 +281,20 @@ function emailequ() {
     var emailk= document.getElementById("email").value;
     var emailcheckk= document.getElementById("emailcheck").value;
     emaillabel = document.getElementById("emailcheckequ");
-
+    if (email!=""&&emailcheckk!=""){
     if (emailk!=emailcheckk){
         emaillabel.innerHTML = '<span style="color:darkred;">✗ Emails are not equal!</span>';
+        document.forms["form"]["isolated"].setAttribute("disabled","");
+        document.forms["form"]["isolated"].setAttribute("hidden","");
     }else{
         emaillabel.innerHTML = '<span style="color:green;">✔ Emails are equal!</span>';
+        document.forms["form"]["isolated"].removeAttribute("disabled");
+        document.forms["form"]["isolated"].removeAttribute("hidden");
     }
-
+    }else{
+        emaillabel.innerHTML = '<span></span>';
+    }
 }
+
+
 
