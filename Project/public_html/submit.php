@@ -31,11 +31,9 @@
             while ($row = $resulttin->fetch_assoc()) {
                 echo "TIN in use, try another valid TIN.<br>";
                 return false;
-
             }
 
         }}
-
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo"$email is a valid email address <br>";
         $login = "insert into login_info(email,pass) VALUES ('$email','$pass') ";
