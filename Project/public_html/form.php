@@ -73,7 +73,7 @@ echo"
                         <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\"required type='password' name='password' id='password' onkeyup='passtest(),passwordequ(),obligation()' ;>
                     </div>
                     <div class=\"col-sm-3\">
-                        <div class=\"progress\">
+                        <div class=\"progress \"height: 10px >
                             <div class=\"progress-bar progress-bar-danger\" id=\"password-progress-bar\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0\"></div>
                          <span id='showmsg'> </span>
                         </div>
@@ -88,11 +88,11 @@ echo"
                     <div class=\"col-sm-3\">
                         <input class=\"form-control\" required oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" type='password' name='passwordcheck' id='passwordcheck' onkeyup='passwordequ(),obligation()' />
                     </div>
-                    <div class=\"col-sm-3\">
+                    <div class=\"col-sm-2\">
                         <label id='passwordcheckequ'></label>
                     </div>
-                    <div class=\"col-sm-3\">
-                        <label id='passwordemail'></label>
+                    <div class=\"col-sm-2\">
+                        <label id='pe'></label>
                     </div>
 
 
@@ -170,8 +170,7 @@ echo "                      <div class=\"form-group\">
 </body>
 
 </html>
-        
-        ";
+";
 
 ?>
 

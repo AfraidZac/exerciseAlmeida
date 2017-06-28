@@ -8,22 +8,28 @@ function obligation(){
     var emailcheck = document.forms["form"]["emailcheck"].value;
     var firstname = document.forms["form"]["firstname"].value;
     var lastname = document.forms["form"]["lastname"].value;
-    if (pass == email || passcheck==email){
-        document.forms["form"]["isolated"].setAttribute("disabled", "");
-        document.forms["form"]["isolated"].setAttribute("hidden", "");
-        document.getElementById('passwordemail').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
-        return false;
-    }else{
-        document.forms["form"]["isolated"].removeAttribute("disabled");
-        document.forms["form"]["isolated"].removeAttribute("hidden");
-        document.getElementById('passwordemail').innerHTML = '<span></span>';
-    }
+
     if (email == "" || emailcheck == "" || passcheck == "" || pass == "" || firstname == "" || lastname == "") {
+        if (email.localeCompare(pass) == false) {
+            document.getElementById('pe').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
+            document.forms["form"]["isolated"].setAttribute("disabled", "");
+            document.forms["form"]["isolated"].setAttribute("hidden", "");
+            return false;
+        }else{
+            document.getElementById('pe').innerHTML = '<span style="color:darkred;"></span>';
+        }
         document.forms["form"]["isolated"].setAttribute("disabled","");
         document.forms["form"]["isolated"].setAttribute("hidden","");
         return false;
     }else{
-
+        if (email.localeCompare(pass) == false) {
+            document.getElementById('pe').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
+            document.forms["form"]["isolated"].setAttribute("disabled", "");
+            document.forms["form"]["isolated"].setAttribute("hidden", "");
+            return false;
+        }else{
+            document.getElementById('pe').innerHTML = '<span style="color:darkred;"></span>';
+        }
     }
 
 
@@ -37,10 +43,7 @@ function requiredfields() {
     var lastname = document.forms["form"]["lastname"].value;
     console.log(email.localeCompare(pass));
 
-    if (email.localeCompare(pass) == false) {
-        alert("Passoword cannot equal to the email");
-        return false;
-    }
+
     var phone = document.forms["form"]["phone"];
     var phonecode = /^(9[1236]\d{7}|2\d{8})$/;
     if (phone.value > 0) {
@@ -295,6 +298,7 @@ function passwordequ() {
             passwordlabel.innerHTML = '<span style="color:green;">✔ Passwords are equal!</span>';
             document.forms["form"]["isolated"].removeAttribute("disabled");
             document.forms["form"]["isolated"].removeAttribute("hidden");
+
 
         }
     } else {
