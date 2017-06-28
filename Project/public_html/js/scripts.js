@@ -30,13 +30,6 @@ function requiredfields() {
         alert("Passoword cannot equal to the email");
         return false;
     }
-    if (email != emailcheck) {
-        alert("Emails are not the same");
-        return false;
-    } else if (pass != passcheck) {
-        alert("Passwords are not the same");
-        return false;
-    }
     console.log(email.localeCompare(pass));
     if (email.localeCompare(pass) == false) {
         alert("Passoword cannot equal to the email");
@@ -319,11 +312,11 @@ function passwordequ() {
     passwordlabel = document.getElementById("passwordcheckequ");
     if (passwordk != "" && passwordcheckk != "") {
         if (passwordk != passwordcheckk) {
-            passwordlabel.innerHTML = '<span style="color:darkred;">✗ Emails are not equal!</span>';
+            passwordlabel.innerHTML = '<span style="color:darkred;">✗ Passwords are not equal!</span>';
             document.forms["form"]["isolated"].setAttribute("disabled", "");
             document.forms["form"]["isolated"].setAttribute("hidden", "");
         } else {
-            passwordlabel.innerHTML = '<span style="color:green;">✔ Emails are equal!</span>';
+            passwordlabel.innerHTML = '<span style="color:green;">✔ Passwords are equal!</span>';
             document.forms["form"]["isolated"].removeAttribute("disabled");
             document.forms["form"]["isolated"].removeAttribute("hidden");
         }
