@@ -25,8 +25,8 @@
                 }
                 if ($link == '2'){
                     include 'home.php';
-
                 }
+
 
                 ?>
             </div>

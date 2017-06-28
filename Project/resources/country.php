@@ -1,4 +1,7 @@
-<p>Country  <select class="btn btn-default dropdown-toggle" name="country" onchange="return countrycheck()">
+<div class="form-group">
+    <label for="country" class=" control-label col-sm-2">Country</label>
+    <div class="col-sm-2">
+<p><select class="btn btn-default dropdown-toggle form-control" name="country" onchange="return countrycheck()">
 <option value="">Country...</option>
 <option value="AF">Afghanistan</option>
 <option value="AL">Albania</option>
@@ -247,4 +250,4 @@
 <option value="ZR">Zaire</option>
 <option value="ZM">Zambia</option>
 <option value="ZW">Zimbabwe</option>
-</select></p><br>
+    </select></div></div>
