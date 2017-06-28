@@ -8,14 +8,24 @@ function obligation(){
     var emailcheck = document.forms["form"]["emailcheck"].value;
     var firstname = document.forms["form"]["firstname"].value;
     var lastname = document.forms["form"]["lastname"].value;
+    if (pass == email || passcheck==email){
+        document.forms["form"]["isolated"].setAttribute("disabled", "");
+        document.forms["form"]["isolated"].setAttribute("hidden", "");
+        document.getElementById('passwordemail').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
+        return false;
+    }else{
+        document.forms["form"]["isolated"].removeAttribute("disabled");
+        document.forms["form"]["isolated"].removeAttribute("hidden");
+        document.getElementById('passwordemail').innerHTML = '<span></span>';
+    }
     if (email == "" || emailcheck == "" || passcheck == "" || pass == "" || firstname == "" || lastname == "") {
         document.forms["form"]["isolated"].setAttribute("disabled","");
         document.forms["form"]["isolated"].setAttribute("hidden","");
         return false;
     }else{
-        document.forms["form"]["isolated"].removeAttribute("disabled");
-        document.forms["form"]["isolated"].removeAttribute("hidden");
+
     }
+
 
 }
 function requiredfields() {
@@ -26,11 +36,7 @@ function requiredfields() {
     var firstname = document.forms["form"]["firstname"].value;
     var lastname = document.forms["form"]["lastname"].value;
     console.log(email.localeCompare(pass));
-    if (email.localeCompare(pass)) {
-        alert("Passoword cannot equal to the email");
-        return false;
-    }
-    console.log(email.localeCompare(pass));
+
     if (email.localeCompare(pass) == false) {
         alert("Passoword cannot equal to the email");
         return false;
@@ -112,39 +118,7 @@ if(password!=""){
 }
 }
 
-/*
-if (code != "") {
-    if ((code.length >= 4) && (code.length <= 7)) {
-        strength += 15;
-    } else if (code.length > 7) {
-        strength += 30;
-    }
-    if (code.match(/[a-z]+/)) {
-        strength += 15;
-    }
-    if (code.match(/[A-Z]+/)) {
-        strength += 20;
-    }
-    if (code.match(/\d+/)) {
-        strength += 25;
-    }
-    if (code.match(/\W+/)) {
-        strength += 35;
-    }
-    if (strength < 30) {
-        show.innerHTML = '<span class="label label-danger">Very weak</span>';
-    } else if ((strength >= 30) && (strength < 60)) {
-        show.innerHTML = '<span class="label label-warning">Weak</span>';
-    } else if ((strength >= 60) && (strength < 85)) {
-        show.innerHTML = '<span class="label label-info">Strong</span>';
-    } else {
-        show.innerHTML = '<span class="label label-success">Very Strong</span>';
-    }
 
-    return;
-} else {
-    show.innerHTML = '<span class="label"></span>';
-}*/
 
 
 function zipcheck() {
@@ -307,6 +281,8 @@ function validatetaxes() {
 }
 
 function passwordequ() {
+    var emailk = document.getElementById("email").value;
+    var emailcheckk = document.getElementById("emailcheck").value;
     var passwordk = document.getElementById("password").value;
     var passwordcheckk = document.getElementById("passwordcheck").value;
     passwordlabel = document.getElementById("passwordcheckequ");
@@ -319,6 +295,7 @@ function passwordequ() {
             passwordlabel.innerHTML = '<span style="color:green;">✔ Passwords are equal!</span>';
             document.forms["form"]["isolated"].removeAttribute("disabled");
             document.forms["form"]["isolated"].removeAttribute("hidden");
+
         }
     } else {
         passwordlabel.innerHTML = '<span></span>';

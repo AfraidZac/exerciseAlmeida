@@ -45,7 +45,7 @@ echo"
                 <div class=\"form-group \">
                     <label class='control-label col-sm-2 ' for=\"email\">Email*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control \" required type='email' name='email' id='email' placeholder='joe@example.com' onkeyup='validateemail(),emailequ(),obligation()' />
+                        <input class=\"form-control \" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\"required type='email' name='email' id='email' placeholder='joe@example.com' onkeyup='validateemail(),emailequ(),obligation()' />
                     </div>
                     <div class=\"col-sm-3\">
                         <label id=\"validate\"></label>
@@ -56,7 +56,7 @@ echo"
                 <div class=\"form-group\">
                     <label class='control-label col-sm-2' for=\"emailcheck\">Email Confirmation*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" required type='text' name='emailcheck' id='emailcheck' onkeyup='emailequ(),obligation()' />
+                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\"required type='text' name='emailcheck' id='emailcheck' onkeyup='emailequ(),obligation()' />
                     </div>
                     <div class=\"col-sm-3\">
                         <label id='emailcheckequ' />
@@ -70,7 +70,7 @@ echo"
 
                     <label class='control-label col-sm-2' for=\"password\">Password *</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" required type='password' name='password' id='password' onkeyup='passtest(),passwordequ(),obligation()' ;>
+                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\"required type='password' name='password' id='password' onkeyup='passtest(),passwordequ(),obligation()' ;>
                     </div>
                     <div class=\"col-sm-3\">
                         <div class=\"progress\">
@@ -86,10 +86,13 @@ echo"
 
                     <label class='control-label col-sm-2' for=\"passwordcheck\">Password Confirmation*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" required type='password' name='passwordcheck' id='passwordcheck' onkeyup='passwordequ(),obligation()' />
+                        <input class=\"form-control\" required oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" type='password' name='passwordcheck' id='passwordcheck' onkeyup='passwordequ(),obligation()' />
                     </div>
                     <div class=\"col-sm-3\">
                         <label id='passwordcheckequ'></label>
+                    </div>
+                    <div class=\"col-sm-3\">
+                        <label id='passwordemail'></label>
                     </div>
 
 
