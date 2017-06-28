@@ -45,7 +45,7 @@ echo"
                 <div class=\"form-group \">
                     <label class='control-label col-sm-2 ' for=\"email\">Email*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control \" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\"required type='email' name='email' id='email' placeholder='joe@example.com' onkeyup='validateemail(),emailequ(),obligation()' />
+                        <input class=\"form-control \" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='email' name='email' id='email' placeholder='joe@example.com' onkeyup='validateemail(),emailequ(),obligation()' />
                     </div>
                     <div class=\"col-sm-3\">
                         <label id=\"validate\"></label>
@@ -56,7 +56,7 @@ echo"
                 <div class=\"form-group\">
                     <label class='control-label col-sm-2' for=\"emailcheck\">Email Confirmation*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\"required type='text' name='emailcheck' id='emailcheck' onkeyup='emailequ(),obligation()' />
+                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='text' name='emailcheck' id='emailcheck' onkeyup='emailequ(),obligation()' />
                     </div>
                     <div class=\"col-sm-3\">
                         <label id='emailcheckequ' />
@@ -70,15 +70,18 @@ echo"
 
                     <label class='control-label col-sm-2' for=\"password\">Password *</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\"required type='password' name='password' id='password' onkeyup='passtest(),passwordequ(),obligation()' ;>
+                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='password' name='password' id='password' onkeyup='passtest(),passwordequ(),obligation()' ;>
                     </div>
                     <div class=\"col-sm-3\">
-                        <div class=\"progress \"height: 10px >
+                        <div class=\"progress \" height: 10px>
                             <div class=\"progress-bar progress-bar-danger\" id=\"password-progress-bar\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0\"></div>
-                         <span id='showmsg'> </span>
+                            <span id='showmsg'> </span>
                         </div>
                     </div>
-                 
+                    <div class='col-sm-2'>
+                        <label id='weaklabel'></label>
+                    </div>
+
                 </div>
 
                 <div class=\"form-group\">
@@ -107,12 +110,7 @@ echo"
                     </div>
 
                 </div>
-                <div class='form-group'>
-                    <div class=\"col-sm-2\"></div>
-                    <div class=\"col-sm-3\">
-                        <h5>* Required fields</h5>
-                    </div>
-                </div>
+
 
                 <div class=\"form-group\">
 
@@ -139,7 +137,7 @@ echo"
 ?>
 <?php
 include '/wamp64/www/GitHub/exerciseAlmeida/Project/resources/country.php';
-echo "                      <div class=\"form-group\">
+echo "         <div class=\"form-group\">
 
                     <label class='control-label col-sm-2' id='TINlabel'>TIN</label>
                     <div class=\"col-sm-2\">
@@ -157,6 +155,10 @@ echo "                      <div class=\"form-group\">
 
 
 
+                </div>
+                <div class='form-group'>
+                    <div class=\"col-sm-2\"></div>
+                    <h5>* Required fields</h5>
                 </div>
 
                 <button type='submit' name='isolated' class=\"btn btn-success\" disabled hidden>Complete</button>

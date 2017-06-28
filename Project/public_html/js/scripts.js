@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 22/06/2017.
  */
-function obligation(){
+function obligation() {
     var pass = document.forms["form"]["password"].value;
     var passcheck = document.forms["form"]["passwordcheck"].value;
     var email = document.forms["form"]["email"].value;
@@ -10,30 +10,30 @@ function obligation(){
     var lastname = document.forms["form"]["lastname"].value;
 
     if (email == "" || emailcheck == "" || passcheck == "" || pass == "" || firstname == "" || lastname == "") {
-        if (email.localeCompare(pass) == false) {
-            document.getElementById('pe').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
-            document.forms["form"]["isolated"].setAttribute("disabled", "");
-            document.forms["form"]["isolated"].setAttribute("hidden", "");
-            return false;
-        }else{
-            document.getElementById('pe').innerHTML = '<span style="color:darkred;"></span>';
-        }
-        document.forms["form"]["isolated"].setAttribute("disabled","");
-        document.forms["form"]["isolated"].setAttribute("hidden","");
+        document.forms["form"]["isolated"].setAttribute("disabled", "");
+        document.forms["form"]["isolated"].setAttribute("hidden", "");
         return false;
-    }else{
+    } else {
         if (email.localeCompare(pass) == false) {
             document.getElementById('pe').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
             document.forms["form"]["isolated"].setAttribute("disabled", "");
             document.forms["form"]["isolated"].setAttribute("hidden", "");
             return false;
-        }else{
-            document.getElementById('pe').innerHTML = '<span style="color:darkred;"></span>';
+        } else {
+
+
+
+
+            document.getElementById('pe').innerHTML = '<span></span>';
+
+
+
+
         }
     }
 
-
 }
+
 function requiredfields() {
     var pass = document.forms["form"]["password"].value;
     var passcheck = document.forms["form"]["passwordcheck"].value;
@@ -69,56 +69,80 @@ function passtest() {
         //Alpha Numeric plus minimum 8
         good = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{8,}$/,
         //Must contain at least one upper case letter, one lower case letter and (one number OR one special char).
+
+
+
+
         better = /^(?=\S*?[A-Z])(?=\S*?[a-z])((?=\S*?[0-9])|(?=\S*?[^\w\*]))\S{8,}$/,
         //Must contain at least one upper case letter, one lower case letter and (one number AND one special char).
         best = /^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,}$/;
 
 
-   var password = document.getElementById("password").value;
+    var password = document.getElementById("password").value;
 
     strength = 0;
 
     progressClass = 'progress-bar progress-bar-',
 
-    $progressBarElement = $('#password-progress-bar');
+        $progressBarElement = $('#password-progress-bar');
 
     /*   var show = document.getElementById("show");*/
 
-if(password!=""){
-    if (best.test(password) === true) {
-        strength = '100%';
-        progressClass += 'success';
+    if (password != "") {
+        if (best.test(password) === true) {
+            strength = '100%';
+            progressClass += 'success';
             showmsg.innerHTML = '<td>Very Strong</td>';
-    } else if (better.test(password) === true) {
-        strength = '80%';
-        progressClass += 'info';
-        showmsg.innerHTML = '<td>Strong</td>';
-    } else if (good.test(password) === true) {
-        strength = '50%';
-        progressClass += 'warning';
-        showmsg.innerHTML = '<td>Decent</td>';
-    } else if (bad.test(password) === true) {
-        strength = '30%';
-        progressClass += 'warning';
-        showmsg.innerHTML = '<td>Weak</td>';
-    } else if (password.length >= 1 && password.length <= wrost) {
-        strength = '10%';
-        progressClass += 'danger';
-        showmsg.innerHTML = '<td>Very Weak</td>';
-    } else if (password.length < 1) {
-        strength = '0';
-        progressClass += 'danger';
+            document.forms["form"]["isolated"].removeAttribute("disabled");
+            document.forms["form"]["isolated"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML = '<span></span>';
+        } else if (better.test(password) === true) {
+            strength = '80%';
+            progressClass += 'info';
+            showmsg.innerHTML = '<td>Strong</td>';
+            document.forms["form"]["isolated"].removeAttribute("disabled");
+            document.forms["form"]["isolated"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML = '<span></span>';
+        } else if (good.test(password) === true) {
+            strength = '50%';
 
+
+
+
+            progressClass += 'warning';
+            showmsg.innerHTML = '<td>Decent</td>';
+            document.forms["form"]["isolated"].removeAttribute("disabled");
+            document.forms["form"]["isolated"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML = '<span></span>';
+        } else if (bad.test(password) === true) {
+            strength = '30%';
+            progressClass += 'warning';
+            showmsg.innerHTML = '<td>Weak</td>';
+            document.forms["form"]["isolated"].removeAttribute("disabled");
+            document.forms["form"]["isolated"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML = '<span></span>';
+        } else if (password.length >= 1 && password.length <= wrost) {
+            strength = '10%';
+            progressClass += 'danger';
+            showmsg.innerHTML = '<td>Very Weak</td>';
+            document.forms["form"]["isolated"].setAttribute("disabled", "");
+            document.forms["form"]["isolated"].setAttribute("hidden", "");
+            document.getElementById('weaklabel').innerHTML = '<span style="color:red">✗ password cannot be Very Weak</span>';
+        } else if (password.length < 1) {
+            strength = '0';
+            progressClass += 'danger';
+
+        }
+
+        $progressBarElement.removeClass().addClass(progressClass);
+        $progressBarElement.attr('aria-valuenow', strength);
+        $progressBarElement.css('width', strength);
+    } else {
+        $progressBarElement.attr('aria-valuenow', 0);
+        $progressBarElement.css('width', 0);
+        showmsg.innerHTML = '<td></td>';
+        document.getElementById('weaklabel').innerHTML = '<span></span>';
     }
-
-    $progressBarElement.removeClass().addClass(progressClass);
-    $progressBarElement.attr('aria-valuenow', strength);
-    $progressBarElement.css('width', strength);
-}else{
-    $progressBarElement.attr('aria-valuenow', 0);
-    $progressBarElement.css('width', 0);
-    showmsg.innerHTML = '<td></td>';
-}
 }
 
 
@@ -169,6 +193,10 @@ function countrycheck() {
         hidepostal.removeAttribute("disabled");
         hidephone.removeAttribute("disabled");
         hidepostal.removeAttribute("hidden");
+
+
+
+
         hidephone.removeAttribute("hidden");
         document.getElementById('TIN').removeAttribute("disabled");
         document.getElementById('TIN').removeAttribute("hidden");
@@ -200,6 +228,9 @@ function validateemail() {
     var request;
 
     try {
+
+
+
 
         request = new XMLHttpRequest();
 
@@ -247,6 +278,9 @@ function validatetaxes() {
         request = new XMLHttpRequest();
 
     } catch (tryMicrosoft) {
+
+
+
 
         try {
 
