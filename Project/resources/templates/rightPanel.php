@@ -11,7 +11,7 @@
         </ul>
         <div class=\"ads\">
             <!-- ads code -->
-        </div>
+              </div>
      
     </div>
     ";

@@ -9,11 +9,11 @@ include(realpath(dirname(__FILE__) . "/../resources/config.php"));
 require_once(TEMPLATES_PATH . "/header.php");
 
 $servername = "localhost";
-$username   = "root";
-$password   = "1234";
-$dbname     = "user_info";
+$username = "root";
+$password = "1234";
+$dbname = "user_info";
 //Connection with the database
-$conn       = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -37,15 +37,15 @@ echo "
             <legend>Registration form</legend>
 
             <div class=\"container-fluid well\">
-"?><?php
-if(isset($_POST['isolated'])){
+"; ?><?php
+if (isset($_POST['isolated'])) {
     require 'submit.php';
 }
-echo"
+echo "
                 <div class=\"form-group \">
                     <label class='control-label col-sm-2 ' for=\"email\">Email*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control \" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='email' name='email' id='email' placeholder='joe@example.com' onkeyup='validateemail(),emailequ(),obligation()' />
+                        <input class=\"form-control \" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='email' name='email' id='email' placeholder='joe@example.com' onkeyup='validateemail(),returnonkyup()'>
                     </div>
                     <div class=\"col-sm-3\">
                         <label id=\"validate\"></label>
@@ -56,7 +56,7 @@ echo"
                 <div class=\"form-group\">
                     <label class='control-label col-sm-2' for=\"emailcheck\">Email Confirmation*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='text' name='emailcheck' id='emailcheck' onkeyup='emailequ(),obligation()' />
+                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='text' name='emailcheck' id='emailcheck' onkeyup='emailequ()' />
                     </div>
                     <div class=\"col-sm-3\">
                         <label id='emailcheckequ' />
@@ -70,7 +70,7 @@ echo"
 
                     <label class='control-label col-sm-2' for=\"password\">Password *</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='password' name='password' id='password' onkeyup='passtest(),passwordequ(),obligation()' ;>
+                        <input class=\"form-control\" oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" required type='password' name='password' id='password' onkeyup='passtest(),returnonkyup()' ;>
                     </div>
                     <div class=\"col-sm-3\">
                         <div class=\"progress \" height: 10px>
@@ -89,7 +89,7 @@ echo"
 
                     <label class='control-label col-sm-2' for=\"passwordcheck\">Password Confirmation*</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" required oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" type='password' name='passwordcheck' id='passwordcheck' onkeyup='passwordequ(),obligation()' />
+                        <input class=\"form-control\" required oncopy=\"return false\" oncut=\"return false\" onpaste=\"return false\" type='password' name='passwordcheck' id='passwordcheck' onkeyup='passwordequ()' />
                     </div>
                     <div class=\"col-sm-2\">
                         <label id='passwordcheckequ'></label>
@@ -103,10 +103,10 @@ echo"
                 <div class=\"form-group \">
                     <label class='control-label col-sm-2' for=\"firstname\">Name *</label>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" required type='text' name='firstname' id='firstname' placeholder='First name' onkeyup='obligation()' />
+                        <input class=\"form-control\" required type='text' name='firstname' id='firstname' placeholder='First name' onkeyup='returnonkyup()' />
                     </div>
                     <div class=\"col-sm-3\">
-                        <input class=\"form-control\" required type='text' name='lastname' id='lastname' placeholder='Last name' onkeyup='obligation()' />
+                        <input class=\"form-control\" required type='text' name='lastname' id='lastname' placeholder='Last name' onkeyup='returnonkyup()' />
                     </div>
 
                 </div>
@@ -124,7 +124,7 @@ echo"
 
                     <label class='control-label col-sm-2' for='postal' id='labelpostal'>Postal</label>
                     <div class=\"col-sm-2\">
-                        <input class=\"form-control\" type='text' name='postal' id='postal' placeholder='xxxx-xxx' onkeyup=' return zipcheck()' pattern='\d{4}-\d{3}' />
+                        <input class=\"form-control\" type='text' name='postal' id='postal' placeholder='xxxx-xxx' onkeyup=' return zipcheck(),returnonkyup()' pattern='\d{4}-\d{3}' />
                     </div>
                     <div class=\"col-sm-1\">
                         <label class='control-label col-sm-1' for='locality' id='labellocality'>Locality</label>
@@ -141,7 +141,7 @@ echo "         <div class=\"form-group\">
 
                     <label class='control-label col-sm-2' id='TINlabel'>TIN</label>
                     <div class=\"col-sm-2\">
-                        <input class=\"form-control\" type='text' pattern='^\d*$' minlength='9' maxlength='9' name='TIN' id='TIN' title='Only integer numbers' onkeyup='validatetaxes()' />
+                        <input class=\"form-control\" type='text' pattern='^\d*$' minlength='9' maxlength='9' name='TIN' id='TIN' title='Only integer numbers' onkeyup='validatetaxes(),returnonkyup()'>
                     </div>
                     <label id='valTIN'></label>
 
@@ -150,7 +150,10 @@ echo "         <div class=\"form-group\">
                     <p id='listphone'>
                         <label class='control-label col-sm-2' for='phone' id='labelphone'>Phone</label>
                         <div class=\"col-sm-2\">
-                            <input class=\"form-control\" type='tel' maxlength='9' pattern='^\d+$' name='phone' id='phone' title='Only portuguese numbers' />
+                            <input class=\"form-control\" type='tel' maxlength='9' pattern='^\d+$' name='phone' id='phone' title='Only portuguese numbers' onkeyup='returnonkyup()' />
+                        </div>
+                        <div class ='col-sm-4'>
+                            <label fot='phone' class='control-label col-sm-3' id='phonelabel'></label>
                         </div>
 
 

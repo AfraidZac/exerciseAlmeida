@@ -6,36 +6,37 @@ $username = "root";
 $password = "1234";
 $dbname = "user_info";
 //Ligaçao com a Base de Dados
-$conn= new mysqli($servername,$username,$password,$dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$firstname =$_POST['firstname'];
-$lastname =$_POST['lastname'];
-$pass =$_POST['password'];
-$email =$_POST['email'];
-$postal =$_POST['postal'];
-$TIN =intval($_POST['TIN']);
-$locality =$_POST['locality'];
-$address =$_POST['address'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$pass = $_POST['password'];
+$email = $_POST['email'];
+$postal = $_POST['postal'];
+$TIN = intval($_POST['TIN']);
+$locality = $_POST['locality'];
+$address = $_POST['address'];
 $phone = intval($_POST['phone']);
 $country = $_POST['country'];
 
 
-if ($TIN>0){
+if ($TIN > 0) {
     $checktin = "SELECT taxes_id FROM info WHERE taxes_id = '$TIN'";
     $resulttin = mysqli_query($conn, $checktin);
 
     if ($resulttin->num_rows > 0) {
         while ($row = $resulttin->fetch_assoc()) {
             echo "<div class=\"alert alert-danger\" role=\"alert\">TIN is allready in use</div>";
-            echo"</fieldset></div></ul>";
+            echo "</fieldset></div></ul>";
             return false;
         }
 
-    }}
+    }
+}
 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo"<div class=\"alert alert-success\" role=\"alert\">$email is a valid address</div> ";
+    echo "<div class=\"alert alert-success\" role=\"alert\">$email is a valid address</div> ";
     $login = "insert into login_info(email,pass) VALUES ('$email','$pass') ";
     $loginreturn = $conn->query($login);
 
@@ -55,7 +56,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "<div class=\"alert alert-danger\" role=\"alert\">error: information is not unique please check TIN or PHONE</div>";
         }
 
-    }else {
+    } else {
 
         echo "<div class=\"alert alert-danger\" role=\"alert\">$email allready in use</div>";
     }

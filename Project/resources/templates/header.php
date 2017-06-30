@@ -25,8 +25,8 @@
     </head>
      
     <body>
-    <div id=\"header\">
-        <h1>CloudNode</h1>
+    <div id=\"header\" class='form-group'>
+        <img src='../public_html/img/Cloud.png'>
         <ul class=\"nav global\">
         </ul>
      

@@ -1,7 +1,6 @@
-/**
- * Created by Administrator on 22/06/2017.
- */
+strength = 0;
 function obligation() {
+    enabler = 0;
     var pass = document.forms["form"]["password"].value;
     var passcheck = document.forms["form"]["passwordcheck"].value;
     var email = document.forms["form"]["email"].value;
@@ -12,52 +11,58 @@ function obligation() {
     if (email == "" || emailcheck == "" || passcheck == "" || pass == "" || firstname == "" || lastname == "") {
         document.forms["form"]["isolated"].setAttribute("disabled", "");
         document.forms["form"]["isolated"].setAttribute("hidden", "");
-        return false;
     } else {
-        if (email.localeCompare(pass) == false) {
-            document.getElementById('pe').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
-            document.forms["form"]["isolated"].setAttribute("disabled", "");
-            document.forms["form"]["isolated"].setAttribute("hidden", "");
-            return false;
+        if (email != "" && pass != "") {
+            if (email.localeCompare(pass) == false) {
+                document.getElementById('pe').innerHTML = '<span style="color:darkred;">✗ Passwords cannot be the same as email!</span>';
+                document.forms["form"]["isolated"].setAttribute("disabled", "");
+                document.forms["form"]["isolated"].setAttribute("hidden", "");
+            } else {
+                document.getElementById('pe').innerHTML = '<span></span>';
+            }
         } else {
-
-
-
-
             document.getElementById('pe').innerHTML = '<span></span>';
-
-
-
-
         }
     }
-
-}
-
-function requiredfields() {
-    var pass = document.forms["form"]["password"].value;
-    var passcheck = document.forms["form"]["passwordcheck"].value;
-    var email = document.forms["form"]["email"].value;
-    var emailcheck = document.forms["form"]["emailcheck"].value;
-    var firstname = document.forms["form"]["firstname"].value;
-    var lastname = document.forms["form"]["lastname"].value;
-    console.log(email.localeCompare(pass));
-
-
     var phone = document.forms["form"]["phone"];
     var phonecode = /^(9[1236]\d{7}|2\d{8})$/;
-    if (phone.value > 0) {
+    if (phone.value.length == 9) {
 
         if (phone.value.match(phonecode)) {
             return true;
         } else {
-            alert("The number is not portuguese the system will only take on portuguese numbers.");
+            document.getElementById('phonelabel').innerHTML = '<span style="color:darkred;">✗ Phone will only take on portuguese numbers</span>';
+            document.forms["form"]["isolated"].setAttribute("disabled", "");
+            document.forms["form"]["isolated"].setAttribute("hidden", "");
             return false;
         }
 
     } else {
+        document.getElementById('phonelabel').innerHTML = '<span></span>';
 
     }
+
+    if (email != "" && emailcheck != "" && passcheck != "" && pass != "" && firstname != "" && lastname != "") {
+        enabler += 1;
+        if (email == emailcheck) {
+            enabler += 1;
+        }
+        if (pass == passcheck) {
+            enabler += 1;
+        }
+        if (strength > '10%') {
+            enabler += 1;
+        }
+    }
+
+    if (enabler == 4) {
+        document.forms["form"]["isolated"].removeAttribute("disabled");
+        document.forms["form"]["isolated"].removeAttribute("hidden");
+    }
+
+
+
+
 }
 
 
@@ -69,10 +74,6 @@ function passtest() {
         //Alpha Numeric plus minimum 8
         good = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{8,}$/,
         //Must contain at least one upper case letter, one lower case letter and (one number OR one special char).
-
-
-
-
         better = /^(?=\S*?[A-Z])(?=\S*?[a-z])((?=\S*?[0-9])|(?=\S*?[^\w\*]))\S{8,}$/,
         //Must contain at least one upper case letter, one lower case letter and (one number AND one special char).
         best = /^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,}$/;
@@ -80,7 +81,6 @@ function passtest() {
 
     var password = document.getElementById("password").value;
 
-    strength = 0;
 
     progressClass = 'progress-bar progress-bar-',
 
@@ -93,33 +93,22 @@ function passtest() {
             strength = '100%';
             progressClass += 'success';
             showmsg.innerHTML = '<td>Very Strong</td>';
-            document.forms["form"]["isolated"].removeAttribute("disabled");
-            document.forms["form"]["isolated"].removeAttribute("hidden");
-            document.getElementById('weaklabel').innerHTML = '<span></span>';
+            document.getElementById('weaklabel').innerHTML='<span></span>';
+
         } else if (better.test(password) === true) {
             strength = '80%';
             progressClass += 'info';
             showmsg.innerHTML = '<td>Strong</td>';
-            document.forms["form"]["isolated"].removeAttribute("disabled");
-            document.forms["form"]["isolated"].removeAttribute("hidden");
             document.getElementById('weaklabel').innerHTML = '<span></span>';
         } else if (good.test(password) === true) {
             strength = '50%';
-
-
-
-
             progressClass += 'warning';
             showmsg.innerHTML = '<td>Decent</td>';
-            document.forms["form"]["isolated"].removeAttribute("disabled");
-            document.forms["form"]["isolated"].removeAttribute("hidden");
             document.getElementById('weaklabel').innerHTML = '<span></span>';
         } else if (bad.test(password) === true) {
             strength = '30%';
             progressClass += 'warning';
             showmsg.innerHTML = '<td>Weak</td>';
-            document.forms["form"]["isolated"].removeAttribute("disabled");
-            document.forms["form"]["isolated"].removeAttribute("hidden");
             document.getElementById('weaklabel').innerHTML = '<span></span>';
         } else if (password.length >= 1 && password.length <= wrost) {
             strength = '10%';
@@ -137,15 +126,14 @@ function passtest() {
         $progressBarElement.removeClass().addClass(progressClass);
         $progressBarElement.attr('aria-valuenow', strength);
         $progressBarElement.css('width', strength);
-    } else {
+    }else{
+        $progressBarElement.removeClass().addClass(progressClass);
         $progressBarElement.attr('aria-valuenow', 0);
         $progressBarElement.css('width', 0);
         showmsg.innerHTML = '<td></td>';
-        document.getElementById('weaklabel').innerHTML = '<span></span>';
     }
+
 }
-
-
 
 
 function zipcheck() {
@@ -195,8 +183,6 @@ function countrycheck() {
         hidepostal.removeAttribute("hidden");
 
 
-
-
         hidephone.removeAttribute("hidden");
         document.getElementById('TIN').removeAttribute("disabled");
         document.getElementById('TIN').removeAttribute("hidden");
@@ -216,7 +202,6 @@ function countrycheck() {
         document.getElementById('TINlist').style.display = 'none';
 
 
-
     }
     console.log("test");
 }
@@ -228,8 +213,6 @@ function validateemail() {
     var request;
 
     try {
-
-
 
 
         request = new XMLHttpRequest();
@@ -255,20 +238,18 @@ function validateemail() {
 
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
             var return_data = request.responseText;
             document.getElementById("validate").innerHTML = return_data;
         }
-    }
+    };
 
     request.send(vars);
 }
 
 
 function validatetaxes() {
-
-
 
 
     var request;
@@ -278,8 +259,6 @@ function validatetaxes() {
         request = new XMLHttpRequest();
 
     } catch (tryMicrosoft) {
-
-
 
 
         try {
@@ -295,31 +274,27 @@ function validatetaxes() {
     }
 
 
-
     var url = "../resources/taxes.php";
     var TIN = document.getElementById("TIN").value;
     var vars = "TIN=" + TIN;
-
-
 
 
     request.open("POST", url, true);
 
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
             var return_data = request.responseText;
             document.getElementById("valTIN").innerHTML = return_data;
+
         }
-    }
+    };
     request.send(vars);
 
 }
 
 function passwordequ() {
-    var emailk = document.getElementById("email").value;
-    var emailcheckk = document.getElementById("emailcheck").value;
     var passwordk = document.getElementById("password").value;
     var passwordcheckk = document.getElementById("passwordcheck").value;
     passwordlabel = document.getElementById("passwordcheckequ");
@@ -328,12 +303,10 @@ function passwordequ() {
             passwordlabel.innerHTML = '<span style="color:darkred;">✗ Passwords are not equal!</span>';
             document.forms["form"]["isolated"].setAttribute("disabled", "");
             document.forms["form"]["isolated"].setAttribute("hidden", "");
+            console.log("CHECK!");
+            return false;
         } else {
             passwordlabel.innerHTML = '<span style="color:green;">✔ Passwords are equal!</span>';
-            document.forms["form"]["isolated"].removeAttribute("disabled");
-            document.forms["form"]["isolated"].removeAttribute("hidden");
-
-
         }
     } else {
         passwordlabel.innerHTML = '<span></span>';
@@ -350,12 +323,21 @@ function emailequ() {
             emaillabel.innerHTML = '<span style="color:darkred;">✗ Emails are not equal!</span>';
             document.forms["form"]["isolated"].setAttribute("disabled", "");
             document.forms["form"]["isolated"].setAttribute("hidden", "");
+            console.log("CHECK!");
+            return false;
         } else {
             emaillabel.innerHTML = '<span style="color:green;">✔ Emails are equal!</span>';
-            document.forms["form"]["isolated"].removeAttribute("disabled");
-            document.forms["form"]["isolated"].removeAttribute("hidden");
         }
     } else {
         emaillabel.innerHTML = '<span></span>';
     }
+}
+
+function returnonkyup() {
+
+    emailequ();
+    passwordequ();
+    obligation();
+    return emailequ(), passwordequ(), obligation();
+
 }
