@@ -11,6 +11,7 @@ require_once(TEMPLATES_PATH . "/header.php");
             <nav class="nav nav-pills">
                 <li role="presentation"><a href="?link=1" name="Register">Register</a></li>
                 <li role="presentation"><a href="?link=2" name="Index">Home</a></li>
+                <li role="presentation"><a href="?link=3" name="Login">Login</a></li>
             </nav>
         </ul>
 
@@ -25,6 +26,9 @@ require_once(TEMPLATES_PATH . "/header.php");
         }
         if ($link == '2') {
             include 'home.php';
+        }
+        if($link=='3'){
+            include 'login.php';
         }
 
 

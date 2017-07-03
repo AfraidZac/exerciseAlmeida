@@ -341,3 +341,14 @@ function returnonkyup() {
     return emailequ(), passwordequ(), obligation();
 
 }
+
+function deleteacc() {
+    text=document.getElementById("deacc").value;
+
+    if (text==="DELETE"){
+        document.forms['deleteform']['buttonload'].removeAttribute("disabled");
+    }else{
+        document.forms['deleteform']['buttonload'].setAttribute("disabled","");
+    }
+
+}
