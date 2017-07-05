@@ -8,16 +8,6 @@
 include(realpath(dirname(__FILE__) . "/../resources/config.php"));
 require_once(TEMPLATES_PATH . "/header.php");
 
-$servername = "localhost";
-$username = "root";
-$password = "1234";
-$dbname = "user_info";
-//Connection with the database
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 echo "
 <html>

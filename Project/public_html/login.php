@@ -1,13 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "1234";
-$dbname = "user_info";
-//Ligaçao com a Base de Dados
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include(realpath(dirname(__FILE__) . "/../resources/config.php"));
 session_start();
 if (!isset($_POST['buttonload'])) {
     a:
@@ -40,7 +32,7 @@ if (!isset($_POST['buttonload'])) {
 
                 <label class='control-label col-sm-2' for='password'>Password</label>
                 <div class='col - sm - 3'>
-                    <input class='form - control' required type='password' href=' ? email' name='password'
+                    <input class='form - control' required type='password' href=' ? pass' name='password'
                            id='password'>
                 </div>
 
@@ -65,17 +57,26 @@ if (!isset($_POST['buttonload'])) {
                 <div class='col - sm - 3'>
                     <label id='validate'></label>
                 </div>
+
             </div>
+            <div class=\"form-group\">
 
-            <div class='form - group'>
 
+                    <label class='control-label col-sm-2' for='password'>New Password</label>
+                    <div class=\"col-sm-3\">
+                        <input class='form - control' required type='password' href=' ? passwordcheckconfirmation' name='passwordcheckconfirmation'id='passwordcheckconfirmation' placeholder='New Password' onkeyup='passtestlogin()'>
+                    </div>
+                    <div class=\"col-sm-2\">
+                        <div class=\"progress \" height: 10px>
+                            <div class=\"progress-bar progress-bar-danger\" id=\"password-progress-bar\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0\"></div>
+                            <span id='showmsg'> </span>
+                        </div>
+                    </div>
+                    <div class='col-sm-2'>
+                        <label id='weaklabel'></label>
+                    </div>
 
-                <label class='control-label col-sm-2' for='password'>New Password</label>
-                <div class='col - sm - 3'>
-                    <input class='form - control' required type='password' href=' ? passwordcheckconfirmation' name='passwordcheckconfirmation'id='passwordcheckconfirmation' placeholder='New Password'>
                 </div>
-
-            </div>
             <button type='submit' name='buttonload' class='btn btn-info' value='change'>Change Password</button>
         </div>
     </fieldset>
@@ -172,7 +173,7 @@ if (!isset($_POST['buttonload'])) {
 }
 ?>
 <?php
-include(realpath(dirname(__FILE__) . "/../resources/config.php"));
+
 require_once(TEMPLATES_PATH . "/header.php");
 if (isset($_POST['buttonload']) && $_POST['buttonload'] === 'login') {
 

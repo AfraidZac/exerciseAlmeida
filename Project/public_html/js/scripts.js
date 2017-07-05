@@ -135,6 +135,85 @@ function passtest() {
 
 }
 
+function passtestlogin() {
+    var wrost = 7,
+        // minimum 8 characters
+        bad = /(?=.{8,}).*/,
+        //Alpha Numeric plus minimum 8
+        good = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{8,}$/,
+        //Must contain at least one upper case letter, one lower case letter and (one number OR one special char).
+        better = /^(?=\S*?[A-Z])(?=\S*?[a-z])((?=\S*?[0-9])|(?=\S*?[^\w\*]))\S{8,}$/,
+        //Must contain at least one upper case letter, one lower case letter and (one number AND one special char).
+        best = /^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,}$/;
+
+
+    var newpass = document.getElementById("passwordcheckconfirmation").value;
+
+
+    progressClass = 'progress-bar progress-bar-',
+
+        $progressBarElement = $('#password-progress-bar');
+
+    /*   var show = document.getElementById("show");*/
+
+    if (newpass != "") {
+        if (best.test(newpass) === true) {
+            strength = '100%';
+            progressClass += 'success';
+            showmsg.innerHTML = '<td>Very Strong</td>';
+            document.forms["form3"]["buttonload"].removeAttribute("disabled");
+            document.forms["form3"]["buttonload"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML='<span></span>';
+
+        } else if (better.test(newpass) === true) {
+            strength = '80%';
+            progressClass += 'info';
+            showmsg.innerHTML = '<td>Strong</td>';
+            document.forms["form3"]["buttonload"].removeAttribute("disabled");
+            document.forms["form3"]["buttonload"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML = '<span></span>';
+        } else if (good.test(newpass) === true) {
+            strength = '50%';
+            progressClass += 'warning';
+            showmsg.innerHTML = '<td>Decent</td>';
+            document.forms["form3"]["buttonload"].removeAttribute("disabled");
+            document.forms["form3"]["buttonload"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML = '<span></span>';
+        } else if (bad.test(newpass) === true) {
+            strength = '30%';
+            progressClass += 'warning';
+            showmsg.innerHTML = '<td>Weak</td>';
+            document.forms["form3"]["buttonload"].removeAttribute("disabled");
+            document.forms["form3"]["buttonload"].removeAttribute("hidden");
+            document.getElementById('weaklabel').innerHTML = '<span></span>';
+        } else if (newpass.length >= 1 && newpass.length <= wrost) {
+            strength = '10%';
+            progressClass += 'danger';
+            showmsg.innerHTML = '<td>Very Weak</td>';
+            document.forms["form3"]["buttonload"].setAttribute("disabled", "");
+            document.forms["form3"]["buttonload"].setAttribute("hidden", "");
+            document.getElementById('weaklabel').innerHTML = '<span style="color:red">✗ password cannot be Very Weak</span>';
+        } else if (newpass.length < 1) {
+            strength = '0';
+            progressClass += 'danger';
+
+        }
+
+        $progressBarElement.removeClass().addClass(progressClass);
+        $progressBarElement.attr('aria-valuenow', strength);
+        $progressBarElement.css('width', strength);
+    }else{
+        $progressBarElement.removeClass().addClass(progressClass);
+        $progressBarElement.attr('aria-valuenow', 0);
+        $progressBarElement.css('width', 0);
+        showmsg.innerHTML = '<td></td>';
+        document.getElementById('weaklabel').innerHTML = '<span></span>';
+        document.forms["form3"]["buttonload"].removeAttribute("disabled");
+        document.forms["form3"]["buttonload"].removeAttribute("hidden");
+    }
+
+}
+
 
 function zipcheck() {
     var portugal = document.forms["form"]["country"].value;

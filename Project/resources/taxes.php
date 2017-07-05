@@ -1,4 +1,6 @@
 <?php
+include(realpath(dirname(__FILE__) . "/../resources/config.php"));
+
 /**
  * Created by PhpStorm.
  * User: Administrator
@@ -7,12 +9,7 @@
  */
 $postal = $_POST['TIN'];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "1234";
-    $dbname = "user_info";
-    //Connection with the database
-    $conn= new mysqli($servername,$username,$password,$dbname);
+
 if ($postal>0){
     $checktin = "SELECT taxes_id FROM info WHERE taxes_id = '$postal'";
     $resulttin = mysqli_query($conn, $checktin);

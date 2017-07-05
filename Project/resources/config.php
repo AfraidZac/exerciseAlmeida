@@ -1,13 +1,17 @@
 <?php
+
+$servername = "localhost";
+$username = "root";
+$password = "1234";
+$dbname = "user_info";
+//Ligaçao com a Base de Dados
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
 $config = array(
-    "db" => array(
-        "db1" => array(
-            "dbname" => "database1",
-            "username" => "dbUser",
-            "password" => "pa$$",
-            "host" => "localhost"
-        ),
-    ),
     "urls" => array(
         "baseUrl" => "localhost:8080"
     ),

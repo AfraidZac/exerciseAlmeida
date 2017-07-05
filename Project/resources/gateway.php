@@ -1,13 +1,10 @@
 <?php
+include(realpath(dirname(__FILE__) . "/../resources/config.php"));
+
 $email= $_POST['email'];
 if(isset($_POST['email'])){
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "1234";
-        $dbname = "user_info";
-        //Connection with the database
-        $conn= new mysqli($servername,$username,$password,$dbname);
+
 
 
         $getloginid = "SELECT id FROM login_info WHERE email ='$email'";
